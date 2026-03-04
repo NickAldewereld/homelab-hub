@@ -8,6 +8,8 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-homelab}
     volumes:
       - pgdata:/var/lib/postgresql/data
+    networks:
+      - internal
     restart: unless-stopped
 
   homelab-hub:
@@ -15,13 +17,18 @@ services:
     container_name: homelab-hub
     environment:
       DATABASE_URL: postgresql://homelab:${POSTGRES_PASSWORD:-homelab}@db:5432/homelab_hub
-    ports:
-      - "8000:8000"
     volumes:
       - ./data:/data
+    networks:
+      - internal
+    expose:
+      - "8000"
     depends_on:
       - db
     restart: unless-stopped
 
 volumes:
   pgdata:
+
+networks:
+  internal:
