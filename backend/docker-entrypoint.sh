@@ -19,6 +19,9 @@ if echo "$DATABASE_URL" | grep -q "postgresql"; then
   done
 fi
 
+# Create exports directory
+mkdir -p /data/exports
+
 echo "Running database migrations..."
 alembic upgrade head
 
