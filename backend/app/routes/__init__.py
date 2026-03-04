@@ -13,6 +13,8 @@ def register_blueprints(app):
     from .inventory import bp as inventory_bp
     from .map_routes import bp as map_bp
     from .webhooks import bp as webhooks_bp
+    from .nodes import bp as nodes_bp
+    from .clusters import bp as clusters_bp
 
     app.register_blueprint(documents_bp)
     app.register_blueprint(hardware_bp)
@@ -25,3 +27,5 @@ def register_blueprints(app):
     app.register_blueprint(inventory_bp)
     app.register_blueprint(map_bp)
     app.register_blueprint(webhooks_bp)
+    app.register_blueprint(nodes_bp)
+    app.register_blueprint(clusters_bp)
