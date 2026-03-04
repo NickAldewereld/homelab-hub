@@ -21,6 +21,10 @@ def create_app(config_class=Config):
     except ImportError:
         pass
 
+    # Register auth middleware
+    from .auth import init_auth
+    init_auth(app)
+
     # Register blueprints
     from .routes import register_blueprints
     register_blueprints(app)

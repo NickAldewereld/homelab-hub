@@ -18,3 +18,4 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # Allow larger request bodies for base64 image uploads (5MB)
     MAX_CONTENT_LENGTH = 5 * 1024 * 1024
+    REQUIRE_AUTH = os.environ.get("REQUIRE_AUTH", "").lower() in ("true", "1", "yes")
